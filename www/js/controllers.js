@@ -1,44 +1,76 @@
 angular.module('starter.controllers', [])
 
-.controller('AppCtrl', function($scope, $ionicModal, $timeout) {
+.controller('AppCtrl', function($scope, $ionicModal, $timeout, $auth, $window) {
+  var validateUser = function(){
+    $scope.currentUser = JSON.parse($window.localStorage.getItem('current-user'));
+    console.log("current user is: ", $scope.currentUser)
+  };
 
-  // With the new view caching in Ionic, Controllers are only called
-  // when they are recreated or on app start, instead of every page change.
-  // To listen for when this page is active (for example, to refresh data),
-  // listen for the $ionicView.enter event:
-  //$scope.$on('$ionicView.enter', function(e) {
-  //});
+  validateUser();
 
-  // Form data for the login modal
   $scope.loginData = {};
 
-  // Create the login modal that we will use later
   $ionicModal.fromTemplateUrl('templates/login.html', {
     scope: $scope
   }).then(function(modal) {
-    $scope.modal = modal;
+    $scope.loginModal = modal;
   });
 
-  // Triggered in the login modal to close it
   $scope.closeLogin = function() {
-    $scope.modal.hide();
+    $scope.loginModal.hide();
   };
 
-  // Open the login modal
   $scope.login = function() {
-    $scope.modal.show();
+    $scope.loginModal.show();
   };
 
-  // Perform the login action when the user submits the login form
+
   $scope.doLogin = function() {
-    console.log('Doing login', $scope.loginData);
-
-    // Simulate a login delay. Remove this and replace with your login
-    // code if using a login system
-    $timeout(function() {
+    $auth.submitLogin($scope.loginData).then(function(response){
+      console.log(response);
+      
+      $window.localStorage.setItem('current-user', JSON.stringify(response));
+      validateUser();
       $scope.closeLogin();
-    }, 1000);
+    }).catch(function(response){
+      console.log(response);
+    });
   };
+
+  $scope.logout = function() {
+    $window.localStorage.removeItem('current-user');
+    validateUser();
+  };
+
+  $scope.signupData = {};
+
+  $ionicModal.fromTemplateUrl('templates/signup.html', {
+    scope: $scope
+  }).then(function(modal) {
+    $scope.signupModal = modal;
+  });
+
+  $scope.closeSignup = function() {
+    $scope.signupModal.hide();
+  };
+
+  $scope.signup = function() {
+    $scope.signupModal.show();
+  };
+
+
+  $scope.doSignup = function() {
+    $auth.submitRegistration($scope.signupData).then(function(response){
+      console.log("The signup function:", response);
+      
+      $window.localStorage.setItem('current-user', JSON.stringify(response.data.data));
+      validateUser();
+      $scope.closeSignup();
+    }).catch(function(response){
+      console.log(response);
+    });
+  };
+
 })
 
 .controller('PlaylistsCtrl', function($scope) {
