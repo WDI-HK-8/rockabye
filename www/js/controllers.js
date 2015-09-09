@@ -73,6 +73,30 @@ angular.module('starter.controllers', [])
 
 })
 
+.controller('SoundCtrl', function($scope, $cordovaMedia, $ionicPlatform, $ionicLoading){
+
+  $ionicPlatform.ready(function() {
+    $scope.play = function(source) {
+      var media = new Media(source);
+      $cordovaMedia.play(media);
+      $scope.$digest();
+    }
+
+  var mediaStatusCallback = function(status) {
+    if(status == 1) {
+        $ionicLoading.show({template: 'Loading...'});
+    } else {
+        $ionicLoading.hide();
+    }
+  }
+
+  var iOSPlayOptions = {
+    numberOfLoops: 2,
+    playAudioWhenScreenIsLocked : false
+  }
+  });
+})
+
 .controller('PlaylistsCtrl', function($scope) {
   $scope.playlists = [
     { title: 'Reggae', id: 1 },
