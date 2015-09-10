@@ -73,15 +73,27 @@ angular.module('starter.controllers', [])
 
 })
 
-.controller('PlaylistsCtrl', function($scope) {
-  $scope.playlists = [
-    { title: 'Reggae', id: 1 },
-    { title: 'Chill', id: 2 },
-    { title: 'Dubstep', id: 3 },
-    { title: 'Indie', id: 4 },
-    { title: 'Rap', id: 5 },
-    { title: 'Cowbell', id: 6 }
-  ];
+.controller('PlaylistsCtrl', function($scope, $cordovaMedia){
+  $scope.play = function(source) {
+    console.log("trying playing");
+
+    var media = $cordovaMedia.newMedia(source);
+
+    media.play();
+  };
+
+  // var mediaStatusCallback = function(status) {
+  //   if(status == 1) {
+  //       $ionicLoading.show({template: 'Loading...'});
+  //   } else {
+  //       $ionicLoading.hide();
+  //   }
+  // }
+
+  // var iOSPlayOptions = {
+  //   numberOfLoops: 2,
+  //   playAudioWhenScreenIsLocked : false
+  // }
 })
 
 .controller('PlaylistCtrl', function($scope, $stateParams) {

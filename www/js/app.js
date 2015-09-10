@@ -1,4 +1,4 @@
-angular.module('starter', ['ionic', 'starter.controllers', 'ng-token-auth'])
+angular.module('starter', ['ionic', 'starter.controllers', 'ng-token-auth', 'ngCordova'])
 
 .run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
