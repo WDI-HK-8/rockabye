@@ -75,6 +75,7 @@ angular.module('starter.controllers', [])
 
 .controller('PlaylistsCtrl', function($scope, $cordovaMedia){
   var media;
+  $scope.songPlaying = "";
   $scope.play = function(source) {
     if(window.Media) {
       if(media) media.stop();
@@ -84,7 +85,12 @@ angular.module('starter.controllers', [])
         numberOfLoops: 2,
         playAudioWhenScreenIsLocked : true
       });
+
+      $scope.songPlaying = source;
     }
+  };
+
+  $scope.stop = function(){
+    media.stop($scope.songPlaying);
   };  
 })
-
