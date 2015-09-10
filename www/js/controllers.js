@@ -73,39 +73,27 @@ angular.module('starter.controllers', [])
 
 })
 
-.controller('SoundCtrl', function($scope, $cordovaMedia, $ionicPlatform, $ionicLoading){
+.controller('PlaylistsCtrl', function($scope, $cordovaMedia){
+  $scope.play = function(source) {
+    console.log("trying playing");
 
-  $ionicPlatform.ready(function() {
-    $scope.play = function(source) {
-      var media = new Media(source);
-      $cordovaMedia.play(media);
-      $scope.$digest();
-    }
+    var media = $cordovaMedia.newMedia(source);
 
-  var mediaStatusCallback = function(status) {
-    if(status == 1) {
-        $ionicLoading.show({template: 'Loading...'});
-    } else {
-        $ionicLoading.hide();
-    }
-  }
+    media.play();
+  };
 
-  var iOSPlayOptions = {
-    numberOfLoops: 2,
-    playAudioWhenScreenIsLocked : false
-  }
-  });
-})
+  // var mediaStatusCallback = function(status) {
+  //   if(status == 1) {
+  //       $ionicLoading.show({template: 'Loading...'});
+  //   } else {
+  //       $ionicLoading.hide();
+  //   }
+  // }
 
-.controller('PlaylistsCtrl', function($scope) {
-  $scope.playlists = [
-    { title: 'Reggae', id: 1 },
-    { title: 'Chill', id: 2 },
-    { title: 'Dubstep', id: 3 },
-    { title: 'Indie', id: 4 },
-    { title: 'Rap', id: 5 },
-    { title: 'Cowbell', id: 6 }
-  ];
+  // var iOSPlayOptions = {
+  //   numberOfLoops: 2,
+  //   playAudioWhenScreenIsLocked : false
+  // }
 })
 
 .controller('PlaylistCtrl', function($scope, $stateParams) {
