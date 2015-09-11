@@ -24,20 +24,20 @@ angular.module('starter', ['ionic', 'starter.controllers', 'ng-token-auth', 'ngC
     controller: 'AppCtrl'
   })
 
-  .state('app.search', {
-    url: '/search',
+  .state('app.guidelines', {
+    url: '/guidelines',
     views: {
       'menuContent': {
-        templateUrl: 'templates/search.html'
+        templateUrl: 'templates/guidelines.html'
       }
     }
   })
 
-  .state('app.browse', {
-      url: '/browse',
+  .state('app.mylullabies', {
+      url: '/mylullabies',
       views: {
         'menuContent': {
-          templateUrl: 'templates/browse.html'
+          templateUrl: 'templates/mylullabies.html'
         }
       }
     })
@@ -49,17 +49,8 @@ angular.module('starter', ['ionic', 'starter.controllers', 'ng-token-auth', 'ngC
           controller: 'PlaylistsCtrl'
         }
       }
-    })
+    });
 
-  .state('app.single', {
-    url: '/playlists/:playlistId',
-    views: {
-      'menuContent': {
-        templateUrl: 'templates/playlist.html',
-        controller: 'PlaylistCtrl'
-      }
-    }
-  });
   // if none of the above states are matched, use this as the fallback
   $urlRouterProvider.otherwise('/app/playlists');
 

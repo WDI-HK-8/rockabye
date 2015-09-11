@@ -19,7 +19,15 @@
     <ion-content>
       <ion-list>
         <ion-item menu-close ng-show="currentUser != null">
-          {{ currentUser.email }}
+          {{ currentUser.name }}
+        </ion-item>
+        <ion-item menu-close href="#/app/playlists" ng-show="currentUser != null">
+          <i class="icon ion-home"></i>
+          Home
+        </ion-item>
+        <ion-item menu-close href="#/app/mylullabies" ng-show="currentUser != null">
+          <i class="icon ion-ios-heart"></i>
+          My Lullabies
         </ion-item>
         <ion-item menu-close ng-click="signup()" ng-show="currentUser == null">
           Sign Up
@@ -27,7 +35,12 @@
         <ion-item menu-close ng-click="login()" ng-show="currentUser == null">
           Login
         </ion-item>
+        <ion-item menu-close href="#/app/guidelines" ng-show="currentUser != null">
+          <i class="icon ion-ios-book"></i>
+          Guidelines
+        </ion-item>
         <ion-item menu-close ng-click="logout()" ng-show="currentUser != null">
+          <i class="icon ion-android-exit"></i>
           Log out
         </ion-item>
       </ion-list>
