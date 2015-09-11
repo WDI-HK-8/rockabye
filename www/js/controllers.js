@@ -74,27 +74,23 @@ angular.module('starter.controllers', [])
 })
 
 .controller('PlaylistsCtrl', function($scope, $cordovaMedia){
+  var media;
+  $scope.songPlaying = "";
   $scope.play = function(source) {
-    console.log("trying playing");
+    if(window.Media) {
+      if(media) media.stop();
+      media = $cordovaMedia.newMedia(source);
 
-    var media = $cordovaMedia.newMedia(source);
+      media.play({
+        numberOfLoops: 2,
+        playAudioWhenScreenIsLocked : true
+      });
 
-    media.play();
+      $scope.songPlaying = source;
+    }
   };
 
-  // var mediaStatusCallback = function(status) {
-  //   if(status == 1) {
-  //       $ionicLoading.show({template: 'Loading...'});
-  //   } else {
-  //       $ionicLoading.hide();
-  //   }
-  // }
-
-  // var iOSPlayOptions = {
-  //   numberOfLoops: 2,
-  //   playAudioWhenScreenIsLocked : false
-  // }
+  $scope.stop = function(){
+    media.stop($scope.songPlaying);
+  };  
 })
-
-.controller('PlaylistCtrl', function($scope, $stateParams) {
-});
