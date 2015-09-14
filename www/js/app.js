@@ -1,4 +1,8 @@
+// var apiUrl = 'https://rails-rockabye.herokuapp.com/api/v1';
+var apiUrl = 'http://localhost:3000/api/v1';
+
 angular.module('starter', ['ionic', 'starter.controllers', 'ng-token-auth', 'ngCordova'])
+
 
 .run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
@@ -17,7 +21,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'ng-token-auth', 'ngC
 .config(function($stateProvider, $urlRouterProvider, $authProvider) {
   $stateProvider
 
-    .state('app', {
+  .state('app', {
     url: '/app',
     abstract: true,
     templateUrl: 'templates/menu.html',
@@ -32,37 +36,40 @@ angular.module('starter', ['ionic', 'starter.controllers', 'ng-token-auth', 'ngC
       }
     }
   })
+
   .state('app.mylullabies', {
-      url: '/mylullabies',
-      views: {
-        'menuContent': {
-          templateUrl: 'templates/mylullabies.html'
-        }
+    url: '/mylullabies',
+    views: {
+      'menuContent': {
+        templateUrl: 'templates/mylullabies.html'
       }
-    })
-    .state('app.playlists', {
-      url: '/playlists',
-      views: {
-        'menuContent': {
-          templateUrl: 'templates/playlists.html',
-          controller: 'PlaylistsCtrl'
-        }
+    }
+  })
+
+  .state('app.playlists', {
+    url: '/playlists',
+    views: {
+      'menuContent': {
+        templateUrl: 'templates/playlists.html',
+        controller: 'PlaylistsCtrl'
       }
-    })
-    .state('app.record', {
-      url: '/record',
-      views: {
-        'menuContent': {
-          templateUrl: 'templates/record.html', 
-          controller: 'PlaylistsCtrl'
-        }
+    }
+  })
+
+  .state('app.record', {
+    url: '/record',
+    views: {
+      'menuContent': {
+        templateUrl: 'templates/record.html', 
+        controller: 'PlaylistsCtrl'
       }
-    });
+    }
+  });
 
   // if none of the above states are matched, use this as the fallback
   $urlRouterProvider.otherwise('/app/playlists');
 
   $authProvider.configure({
-    apiUrl: 'http://localhost:3000/api/v1' || 'https://rails-rockabye.herokuapp.com/'
+    apiUrl: apiUrl
   });
 });
