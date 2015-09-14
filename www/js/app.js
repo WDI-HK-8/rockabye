@@ -55,6 +55,6 @@ angular.module('starter', ['ionic', 'starter.controllers', 'ng-token-auth', 'ngC
   $urlRouterProvider.otherwise('/app/playlists');
 
   $authProvider.configure({
-    apiUrl: 'http://localhost:3000/api/v1' 
+    apiUrl: 'http://localhost:3000/api/v1' || 'https://rails-rockabye.herokuapp.com/'
   });
 });
