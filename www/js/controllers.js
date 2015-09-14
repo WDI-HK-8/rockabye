@@ -92,5 +92,16 @@ angular.module('starter.controllers', [])
 
   $scope.stop = function(){
     media.stop($scope.songPlaying);
-  };  
+  };
+
+  var customMedia;
+  
+  $scope.startRecord = function(){
+    customMedia = $cordovaMedia.newMedia("documents://custom.wav");
+    customMedia.startRecord();
+  };
+
+  $scope.stopRecord = function(){
+    customMedia.stopRecord();
+  };
 })

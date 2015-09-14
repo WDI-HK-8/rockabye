@@ -32,7 +32,6 @@ angular.module('starter', ['ionic', 'starter.controllers', 'ng-token-auth', 'ngC
       }
     }
   })
-
   .state('app.mylullabies', {
       url: '/mylullabies',
       views: {
@@ -46,6 +45,15 @@ angular.module('starter', ['ionic', 'starter.controllers', 'ng-token-auth', 'ngC
       views: {
         'menuContent': {
           templateUrl: 'templates/playlists.html',
+          controller: 'PlaylistsCtrl'
+        }
+      }
+    })
+    .state('app.record', {
+      url: '/record',
+      views: {
+        'menuContent': {
+          templateUrl: 'templates/record.html', 
           controller: 'PlaylistsCtrl'
         }
       }

@@ -1,0 +1,28 @@
+<ion-view view-title="Record New Sound">
+  <ion-content>
+    <h2>Record New Sound</h2>
+
+    <a class="button button-icon icon ion-android-microphone"></a>
+
+    <div class="row">
+      <div class="col col-50">
+        <button class="button" ng-click="startRecord()">
+          <i class="icon ion-record"></i>
+        </button>
+      </div>
+      <div class="col col-50">
+        <button class="button" ng-click="stopRecord()">
+          <i class="icon ion-stop"></i>
+        </button>
+      </div>
+    </div>
+    <div class="row">
+      <div>
+        <button class="button" ng-click="play('documents://custom.wav')">
+          <i class="icon ion-play"></i>
+        </button>
+      </div>
+    </div>  
+
+  </ion-content>
+</ion-view>
