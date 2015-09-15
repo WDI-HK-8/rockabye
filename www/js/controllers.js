@@ -1,6 +1,6 @@
 angular.module('starter.controllers', [])
 
-.controller('AppCtrl', function($scope, $ionicModal, $timeout, $auth, $window) {
+.controller('AppCtrl', function($scope, $ionicModal, $timeout, $auth, $window, $location) {
   var validateUser = function(){
     $scope.currentUser = JSON.parse($window.localStorage.getItem('current-user'));
     console.log("current user is: ", $scope.currentUser)
@@ -40,6 +40,8 @@ angular.module('starter.controllers', [])
   $scope.logout = function() {
     $window.localStorage.removeItem('current-user');
     validateUser();
+    $location.path("/mylullabies");
+    $window.location.reload(true);
   };
 
   $scope.signupData = {};
