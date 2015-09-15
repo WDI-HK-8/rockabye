@@ -1,6 +1,6 @@
 angular.module('starter.controllers', [])
 
-.controller('AppCtrl', function($scope, $ionicModal, $timeout, $auth, $window, $location) {
+.controller('AppCtrl', function($scope, $ionicModal, $timeout, $auth, $window, $location, $ionicPopup) {
   var validateUser = function(){
     $scope.currentUser = JSON.parse($window.localStorage.getItem('current-user'));
     console.log("current user is: ", $scope.currentUser)
@@ -34,6 +34,14 @@ angular.module('starter.controllers', [])
       $scope.closeLogin();
     }).catch(function(response){
       console.log(response);
+      var message = '';
+      for (var i=0; i < response.errors.length; i++){
+        message += response.errors[i] + ' <br> ';
+      };
+      $ionicPopup.alert({
+        title: 'Please Try Again',
+        template: 'Sorry, ' + message
+      });
     });
   };
 
@@ -70,6 +78,14 @@ angular.module('starter.controllers', [])
       $scope.closeSignup();
     }).catch(function(response){
       console.log(response);
+      var message = '';
+      for (var i=0; i < response.data.errors.full_messages.length; i++){
+        message += ' <br> ' + response.data.errors.full_messages[i];
+      }
+      $ionicPopup.alert({
+        title: 'Please Try Again',
+        template: 'Sorry, ' + message
+      });
     });
   };
 
