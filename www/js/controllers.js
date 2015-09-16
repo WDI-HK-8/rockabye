@@ -87,29 +87,63 @@ angular.module('starter.controllers', [])
 
 .controller('PlaylistsCtrl', function($scope, $cordovaMedia){
 
-  $scope.imageDefaultArr = ["hairdryer", "stream", "rain", "forrain", "heart", "thunder", "fire"];
 
-  $scope.imageDefault ={};
+  // $scope.imageDefault ={};
 
-  for(var i=0; i < $scope.imageDefaultArr.length; i++){
-    $scope.imageDefault["image"+(i+1)] = {
-      link1: "img/icon_"+$scope.imageDefaultArr[i]+".png",
-      link2: "img/icon_"+$scope.imageDefaultArr[i]+"_selected.png"
-    };
-  }
+  // for(var i=0; i < $scope.songNames.length; i++){
+  //   $scope.imageDefault["image"+(i+1)] = {
+  //     link1: "img/icon_"+$scope.imageDefaultArr[i]+".png",
+  //     link2: "img/icon_"+$scope.imageDefaultArr[i]+"_selected.png"
+  //   };
+  // }
 
-  $scope.setImage = function (){
-    for(var i=0; i < $scope.imageDefaultArr.length; i++){
-      $scope.image
-      $scope["image"+(i+1)] = $scope.imageDefault["image"+(i+1)].link1;
+  // $scope.setImage = function (){
+  //   for(var i=0; i < $scope.imageDefaultArr.length; i++){
+  //     $scope.image
+  //     $scope["image"+(i+1)] = $scope.imageDefault["image"+(i+1)].link1;
+  //   }
+  // };
+
+  // $scope.setImage();
+
+  // $scope.songs = [
+  //   {
+  //     name:
+  //     inUse: 
+  //     link1:
+  //     link2:
+  //   }
+  // ]
+
+  $scope.songNames = ["hairdryer", "stream", "rain", "forrain", "heart", "thunder", "fire"];
+
+  $scope.songs = [];
+
+  for (var i=0; i < $scope.songNames.length; i++){
+    var songName = $scope.songNames[i];
+    var tempHash = {
+      name: songName,
+      inUse: "",
+      link1: "img/icon_"+songName+".png",
+      link2: "img/icon_"+songName+"_selected.png",
+      source: "mp3/"+songName+".mp3",
+      selected: false
     }
-  };
+    $scope.songs.push(tempHash);
+  }
+  console.log($scope.songs);
 
+  $scope.setImage = function () {
+    for (var i=0; i < $scope.songs.length; i++){
+      $scope.songs[i].inUse = $scope.songs[i].link1;
+    }
+  }
   $scope.setImage();
 
   var media;
   $scope.songPlaying = "";
-  $scope.play = function(source, imageKey) {
+  $scope.play = function(source, index) {
+    $scope.songs[index].inUse = $scope.songs[index].link2;
     if(window.Media) {
       if(media) media.stop();
       $scope.setImage();
@@ -122,12 +156,11 @@ angular.module('starter.controllers', [])
 
       $scope.songPlaying = source;
     }
-    $scope[imageKey] = $scope.imageDefault[imageKey].link2;
   };
 
   $scope.stop = function(){
-    media.stop($scope.songPlaying);
     $scope.setImage();
+    media.stop($scope.songPlaying);
   };
 
   var customMedia;
