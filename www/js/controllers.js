@@ -86,32 +86,30 @@ angular.module('starter.controllers', [])
 })
 
 .controller('PlaylistsCtrl', function($scope, $cordovaMedia){
-  $scope.imageDefault = {
-    image1: {
-      link1: "img/icon_hairdryer.png",
-      link2: "img/icon_hairdryer_selected.png"
-    },
-    image2: {
-      link1: "img/icon_stream.png",
-      link2: "img/icon_stream_selected.png"
-    },
-    image3: {
-      link1: "img/icon_rain.png",
-      link2: "img/icon_rain_selected.png"
-    }
+
+  $scope.imageDefaultArr = ["hairdryer", "stream", "rain", "forrain", "heart", "thunder"];
+
+  $scope.imageDefault ={};
+
+  for(var i=0; i < $scope.imageDefaultArr.length; i++){
+    $scope.imageDefault["image"+(i+1)] = {
+      link1: "img/icon_"+$scope.imageDefaultArr[i]+".png",
+      link2: "img/icon_"+$scope.imageDefaultArr[i]+"_selected.png"
+    };
   }
 
   $scope.setImage = function (){
-    $scope.image1 = $scope.imageDefault.image1.link1;
-    $scope.image2 = $scope.imageDefault.image2.link1;
-    $scope.image3 = $scope.imageDefault.image3.link1;
+    for(var i=0; i < $scope.imageDefaultArr.length; i++){
+      $scope.image
+      $scope["image"+(i+1)] = $scope.imageDefault["image"+(i+1)].link1;
+    }
   };
 
   $scope.setImage();
 
   var media;
   $scope.songPlaying = "";
-  $scope.play = function(source, imageKey) {
+  $scope.play = function(name, imageKey) {
     if(window.Media) {
       if(media) media.stop();
       $scope.setImage();

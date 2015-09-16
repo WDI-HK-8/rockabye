@@ -7,7 +7,7 @@
         <img ng-src="{{image1}}" id="sound-icon" ng-click="play('mp3/hair-dryer.mp3', 'image1')">
       </div>
       <div class="col col-33">
-        <img ng-src="{{image2}}" id="sound-icon" ng-click="play('mp3/stream.mp3', 'image2')">
+        <img ng-src="{{image2}}" id="sound-icon" ng-click="play(song.name, 'image2')">
       </div>
       <div class="col col-33"> 
         <img ng-src="{{image3}}" id="sound-icon" ng-click="play('mp3/heavy-rain.mp3', 'image3')">
@@ -15,15 +15,27 @@
     </div>
 
     <div class="row">
-      <div class="col col-33"><button class="button" ng-click="play('mp3/fireplace.mp3')">Fireplace</button></div>
-      <div class="col col-33"><button class="button" ng-click="play('mp3/forest-rain.mp3')">Forest Rain</button></div>
-      <div class="col col-33"><button class="button" ng-click="play('mp3/wind.mp3')">Wind</button></div>
+      <div class="col col-33">
+        <img ng-src="{{image4}}" id="sound-icon" ng-click="play('mp3/forest-rain.mp3', 'image4')">
+      </div>
+      <div class="col col-33">
+        <img ng-src="{{image5}}" id="sound-icon" ng-click="play('mp3/heart.mp3', 'image5')">
+      </div>
+      <div class="col col-33"> 
+        <img ng-src="{{image6}}" id="sound-icon" ng-click="play('mp3/heavy-rain.mp3', 'image6')">
+      </div>  
     </div>
 
     <div class="row">
-      <div class="col col-33"><button class="button" ng-click="play('mp3/')">Another</button></div>
-      <div class="col col-33"><img ng-src="img/icon_stop.png" id="sound-icon" ng-click="stop()"></div>
-      <div class="col col-33"><button class="button" ng-click="play('mp3/')">Another</button></div>
+      <div class="col col-33">
+        <img ng-src="{{image7}}" id="sound-icon" ng-click="play('mp3/hair-dryer.mp3', 'image7')">
+      </div>
+      <div class="col col-33">
+        <img ng-src="img/icon_stop.png" id="sound-icon" ng-click="stop()">
+      </div>
+      <div class="col col-33"> 
+        <img ng-src="{{image8}}" id="sound-icon" ng-click="play('mp3/heavy-rain.mp3', 'image8')">
+      </div>  
     </div>    
 
   </ion-content>
