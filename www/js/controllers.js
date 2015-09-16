@@ -86,24 +86,50 @@ angular.module('starter.controllers', [])
 })
 
 .controller('PlaylistsCtrl', function($scope, $cordovaMedia){
+  $scope.imageDefault = {
+    image1: {
+      link1: "img/icon_hairdryer.png",
+      link2: "img/icon_hairdryer_selected.png"
+    },
+    image2: {
+      link1: "img/icon_stream.png",
+      link2: "img/icon_stream_selected.png"
+    },
+    image3: {
+      link1: "img/icon_rain.png",
+      link2: "img/icon_rain_selected.png"
+    }
+  }
+
+  $scope.setImage = function (){
+    $scope.image1 = $scope.imageDefault.image1.link1;
+    $scope.image2 = $scope.imageDefault.image2.link1;
+    $scope.image3 = $scope.imageDefault.image3.link1;
+  };
+
+  $scope.setImage();
+
   var media;
   $scope.songPlaying = "";
-  $scope.play = function(source) {
+  $scope.play = function(source, imageKey) {
     if(window.Media) {
       if(media) media.stop();
+      $scope.setImage();
       media = $cordovaMedia.newMedia(source);
 
       media.play({
-        numberOfLoops: 2,
+        numberOfLoops: 'infinite',
         playAudioWhenScreenIsLocked : true
       });
 
       $scope.songPlaying = source;
     }
+    $scope[imageKey] = $scope.imageDefault[imageKey].link2;
   };
 
   $scope.stop = function(){
     media.stop($scope.songPlaying);
+    $scope.setImage();
   };
 
   var customMedia;
@@ -117,3 +143,4 @@ angular.module('starter.controllers', [])
     customMedia.stopRecord();
   };
 })
+

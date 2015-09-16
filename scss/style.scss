@@ -1,14 +1,22 @@
 /* Empty. Add your own CSS if you like */
 
-h1, h2 {
+h2 {
   padding: 15px;
   text-align: center;
   color: #fff;
   font-family: 'Handlee', cursive;
 }
 
+h1 {
+  color: #fff;
+}
+
 #currentuser {
   text-align: center;
+}
+
+.button {
+  color: #42454A;
 }
 
 p {
@@ -28,8 +36,17 @@ p {
   background-repeat: no-repeat;
 }
 
-ion-item.item, ion-content, .item-complex .item-content {
+ion-item.item, .item-complex .item-content, ion-header-bar.bar, .ionic-scroll {
   background-color: #2C8BDE;
   color: #fff;
   border: #000;
+}
+
+#sound-icon {
+  width: 80%;
+  height: auto;
+}
+
+#sound-icon:active {
+  border: 1px solid #2C8BDE;
 }
