@@ -34,10 +34,7 @@ angular.module('starter.controllers', [])
       $scope.closeLogin();
     }).catch(function(response){
       console.log(response);
-      var message = '';
-      for (var i=0; i < response.errors.length; i++){
-        message += response.errors[i] + ' <br> ';
-      };
+      var message = response.errors.join('<br>');
       $ionicPopup.alert({
         title: 'Please Try Again',
         template: 'Sorry, ' + message
@@ -78,10 +75,7 @@ angular.module('starter.controllers', [])
       $scope.closeSignup();
     }).catch(function(response){
       console.log(response);
-      var message = '';
-      for (var i=0; i < response.data.errors.full_messages.length; i++){
-        message += ' <br> ' + response.data.errors.full_messages[i];
-      }
+      var message = response.data.errors.full_messages.join('<br>');
       $ionicPopup.alert({
         title: 'Please Try Again',
         template: 'Sorry, ' + message
