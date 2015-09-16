@@ -87,7 +87,7 @@ angular.module('starter.controllers', [])
 
 .controller('PlaylistsCtrl', function($scope, $cordovaMedia){
 
-  $scope.imageDefaultArr = ["hairdryer", "stream", "rain", "forrain", "heart"];
+  $scope.imageDefaultArr = ["hairdryer", "stream", "rain", "forrain", "heart", "thunder"];
 
   $scope.imageDefault ={};
 
