@@ -1,6 +1,6 @@
 angular.module('starter.controllers', [])
 
-.controller('AppCtrl', function($scope, $ionicModal, $timeout, $auth, $window) {
+.controller('AppCtrl', function($scope, $ionicModal, $timeout, $auth, $window, $location, $ionicPopup) {
   var validateUser = function(){
     $scope.currentUser = JSON.parse($window.localStorage.getItem('current-user'));
     console.log("current user is: ", $scope.currentUser)
@@ -34,12 +34,19 @@ angular.module('starter.controllers', [])
       $scope.closeLogin();
     }).catch(function(response){
       console.log(response);
+      var message = response.errors.join('<br>');
+      $ionicPopup.alert({
+        title: 'Please Try Again',
+        template: 'Sorry, ' + message
+      });
     });
   };
 
   $scope.logout = function() {
     $window.localStorage.removeItem('current-user');
     validateUser();
+    $location.path("/mylullabies");
+    $window.location.reload(true);
   };
 
   $scope.signupData = {};
@@ -68,6 +75,11 @@ angular.module('starter.controllers', [])
       $scope.closeSignup();
     }).catch(function(response){
       console.log(response);
+      var message = response.data.errors.full_messages.join('<br>');
+      $ionicPopup.alert({
+        title: 'Please Try Again',
+        template: 'Sorry, ' + message
+      });
     });
   };
 
