@@ -87,7 +87,7 @@ angular.module('starter.controllers', [])
 
 .controller('PlaylistsCtrl', function($scope, $cordovaMedia){
 
-  $scope.imageDefaultArr = ["hairdryer", "stream", "rain", "forrain", "heart", "thunder"];
+  $scope.imageDefaultArr = ["hairdryer", "stream", "rain", "forrain", "heart"];
 
   $scope.imageDefault ={};
 
@@ -109,7 +109,7 @@ angular.module('starter.controllers', [])
 
   var media;
   $scope.songPlaying = "";
-  $scope.play = function(name, imageKey) {
+  $scope.play = function(source, imageKey) {
     if(window.Media) {
       if(media) media.stop();
       $scope.setImage();
