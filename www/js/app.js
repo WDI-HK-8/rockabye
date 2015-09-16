@@ -1,5 +1,5 @@
-// var apiUrl = 'https://rails-rockabye.herokuapp.com/api/v1';
-var apiUrl = 'http://localhost:3000/api/v1';
+var apiUrl = 'https://rails-rockabye.herokuapp.com/api/v1';
+// var apiUrl = 'http://localhost:3000/api/v1';
 
 angular.module('starter', ['ionic', 'starter.controllers', 'ng-token-auth', 'ngCordova'])
 
