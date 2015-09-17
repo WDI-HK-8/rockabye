@@ -45,8 +45,18 @@ ion-item.item, .item-complex .item-content, ion-header-bar.bar, .ionic-scroll {
 #sound-icon {
   width: 80%;
   height: auto;
+  display: block;
+  margin: auto;
 }
 
 #sound-icon:active {
   border: 1px solid #2C8BDE;
+}
+
+#microphone {
+  display: block;
+  margin: 0 auto 30px auto;
+  border-bottom: 5px solid #42454A;
+  width: 50%;
+  height: auto;
 }

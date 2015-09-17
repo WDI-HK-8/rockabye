@@ -2,29 +2,17 @@
   <ion-content class="main">
     <h2>Rock-a-bye Baby</h2>
 
-    <div class="row">
-      <div class="col col-33">
-        <img ng-src="{{image1}}" id="sound-icon" ng-click="play('mp3/hair-dryer.mp3', 'image1')">
+    <div class="row" style="display: -webkit-flex; -webkit-flex-wrap: wrap; display: flex; flex-wrap: wrap;">
+      <div class="col col-33" ng-repeat="song in songs track by $index">
+        <img src="{{songs[$index].inUse}}" id="sound-icon" ng-click="play(song.source, $index)">
       </div>
-      <div class="col col-33">
-        <img ng-src="{{image2}}" id="sound-icon" ng-click="play('mp3/stream.mp3', 'image2')">
-      </div>
-      <div class="col col-33"> 
-        <img ng-src="{{image3}}" id="sound-icon" ng-click="play('mp3/heavy-rain.mp3', 'image3')">
-      </div>  
     </div>
 
-    <div class="row">
-      <div class="col col-33"><button class="button" ng-click="play('mp3/fireplace.mp3')">Fireplace</button></div>
-      <div class="col col-33"><button class="button" ng-click="play('mp3/forest-rain.mp3')">Forest Rain</button></div>
-      <div class="col col-33"><button class="button" ng-click="play('mp3/wind.mp3')">Wind</button></div>
-    </div>
 
     <div class="row">
-      <div class="col col-33"><button class="button" ng-click="play('mp3/')">Another</button></div>
-      <div class="col col-33"><img ng-src="img/icon_stop.png" id="sound-icon" ng-click="stop()"></div>
-      <div class="col col-33"><button class="button" ng-click="play('mp3/')">Another</button></div>
-    </div>    
-
+      <div class="col col-33 col-offset-33">
+        <img ng-src="img/icon_stop.png" id="sound-icon" ng-click="stop()">
+      </div> 
+    </div>   
   </ion-content>
 </ion-view>

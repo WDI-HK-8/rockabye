@@ -2,27 +2,33 @@
   <ion-content class="main">
     <h2>Record New Sound</h2>
 
-    <a class="button button-icon icon ion-android-microphone"></a>
+    <!-- <a class="button button-icon icon ion-android-microphone"></a> -->
 
     <div class="row">
-      <div class="col col-50">
-        <button class="button" ng-click="startRecord()">
-          <i class="icon ion-record"></i>
-        </button>
-      </div>
-      <div class="col col-50">
-        <button class="button" ng-click="stopRecord()">
-          <i class="icon ion-stop"></i>
-        </button>
+      <div class="col col-100">
+        <img src="img/microphone.png" id="microphone">
+        <p ng-show="messageShow">Recording ...</p>
       </div>
     </div>
+
     <div class="row">
-      <div>
-        <button class="button" ng-click="play('documents://custom.wav')">
-          <i class="icon ion-play"></i>
-        </button>
+      <div class="col col-33">
+        <img src="img/icon_record.png" id="sound-icon" ng-click="startRecord()">
       </div>
-    </div>  
+      <div class="col col-33">
+        <img src="img/icon_stopr.png" id="sound-icon" ng-click="stopRecord()">
+      </div>
+      <div class="col col-33">
+        <img src="img/icon_play.png" id="sound-icon" ng-click="play('documents://custom.wav')">
+      </div>
+    </div> 
+
+    <div class="row">
+      <div class="col col-33 col-offset-33">
+        <img src="img/icon_stop.png" id="sound-icon" ng-click="stop('documents://custom.wav')">
+      </div>
+    </div>
+
 
   </ion-content>
 </ion-view>
