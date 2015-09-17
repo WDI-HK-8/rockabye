@@ -165,13 +165,16 @@ angular.module('starter.controllers', [])
   };
 
   var customMedia;
+  var messageShow = false;
   
   $scope.startRecord = function(){
+    messageShow = true;
     customMedia = $cordovaMedia.newMedia("documents://custom.wav");
     customMedia.startRecord();
   };
 
   $scope.stopRecord = function(){
+    messageShow = false;
     customMedia.stopRecord();
   };
 })
