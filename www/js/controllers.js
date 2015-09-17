@@ -144,6 +144,7 @@ angular.module('starter.controllers', [])
   $scope.songPlaying = "";
   $scope.play = function(source, index) {
     $scope.songs[index].inUse = $scope.songs[index].link2;
+    console.log($scope.songs[index].inUse);
     if(window.Media) {
       if(media) media.stop();
       $scope.setImage();

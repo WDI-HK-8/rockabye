@@ -4,7 +4,7 @@
 
     <div class="row" style="display: -webkit-flex; -webkit-flex-wrap: wrap; display: flex; flex-wrap: wrap;">
       <div class="col col-33" ng-repeat="song in songs track by $index">
-        <img src="{{song.inUse}}" id="sound-icon" ng-click="play(song.source, $index)">
+        <img src="{{songs[$index].inUse}}" id="sound-icon" ng-click="play(song.source, $index)">
       </div>
     </div>
 
